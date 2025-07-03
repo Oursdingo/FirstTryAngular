@@ -10,7 +10,7 @@ import { PokemonForme } from './pokemon-forme';
 import { ErrorPokemonNotFound } from './error-pokemon-not-found';
 export interface Pokemon extends ErrorPokemonNotFound {
   pokedex_id: number;
-  generation: 1;
+  generation: string;
   category: string;
   name: PokemonName;
   sprites: pokemonSprites;

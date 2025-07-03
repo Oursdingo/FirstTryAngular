@@ -1,0 +1,46 @@
+@if(pokemon(); as pokemon) {
+<div class="flex-sm justify-center-sm my-8-sm">
+  <table
+    class="w-full max-w-3xl table-auto shadow rounded-2xl overflow-hidden bg-white"
+  >
+    <tr>
+      <!-- Colonne 1 : Infos principales -->
+      <td
+        class="align-top p-6 border-r border-gray-200 bg-gray-50 rounded-tl-2xl rounded-bl-2xl"
+      >
+        <h3
+          class="text-xl font-semibold mb-4 text-center underline text-blue-700"
+        >
+          Infos de :{{ pokemon.name.fr }}
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+          <li><strong>Catégorie:</strong> {{ pokemon.category }}</li>
+          <li><strong>Génération:</strong> {{ pokemon.generation }}</li>
+          <li><strong>Pokedex:</strong> {{ pokemon.pokedex_id }}</li>
+          <li *ngFor="let type of pokemon.types">
+            <strong>Types:</strong> {{ type.name }}
+          </li>
+          <li><strong>Poids:</strong> {{ pokemon.weight }}</li>
+          <li><strong>Taille:</strong> {{ pokemon.height }}</li>
+        </ul>
+      </td>
+      <!-- Colonne 2 : Statistiques -->
+      <td class="align-top p-6 bg-gray-50 rounded-tr-2xl rounded-br-2xl">
+        <h3
+          class="text-xl font-semibold mb-4 text-center underline text-green-700"
+        >
+          Statistiques de :{{ pokemon.name.fr }}
+        </h3>
+        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+          <li><strong>PV:</strong> {{ pokemon.stats.hp }}</li>
+          <li><strong>Attaque:</strong> {{ pokemon.stats.atk }}</li>
+          <li><strong>Défense:</strong> {{ pokemon.stats.def }}</li>
+          <li><strong>Attaque Spé:</strong> {{ pokemon.stats.spec_atk }}</li>
+          <li><strong>Défense Spé:</strong> {{ pokemon.stats.spec_def }}</li>
+          <li><strong>Vitesse:</strong> {{ pokemon.stats.vit }}</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+}

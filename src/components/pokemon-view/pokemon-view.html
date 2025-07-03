@@ -1,0 +1,10 @@
+@if (pokemon (); as pokemon){
+<div>
+  <h2
+    class="mx-auto w-fit font-bold text-4xl text-purple-600 underline-offset-4"
+  >
+    {{ pokemon.name.fr }}
+  </h2>
+  <img class="mx-auto w-fit" [src]="pokemon.sprites.regular" />
+</div>
+}

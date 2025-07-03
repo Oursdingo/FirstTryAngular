@@ -1,0 +1,15 @@
+@if(resistance(); as resistances){
+<div
+  class="grid grid-cols-6 shadow rounded-2xl overflow-hidden bg-gray-50 p-4 mb-4"
+>
+  <ng-container *ngFor="let resistance of resistances">
+    <img
+      class="p-2"
+      [style.opacity]="
+        resistance.multiplier > 0 ? resistance.multiplier / 2 : 0.25
+      "
+      [src]="getResistanceImage(resistance.name)"
+    />
+  </ng-container>
+</div>
+}

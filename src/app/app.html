@@ -1,19 +1,55 @@
 <main class="ml-3">
   <h1 class="text-3xl font-bold underline mb-4">Pokemon-app works! 🎉</h1>
-  <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="pokemonForm" (ngSubmit)="onSubmit()" class="mx-auto w-fit">
     <label class="text-purple-600" for="pokemon-name">Nom du pokemon</label>
     <input
       name="pokemon-name"
       type="text"
       formControlName="pokemonName"
       placeholder="Enter Pokémon name"
-      class="border border-gray-300 rounded p-2 mt-4 mb-4 w-full"
+      class="border border-gray-300 rounded p-2 mx-4 my-auto"
     />
     <button
       type="submit"
-      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      class="cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
     >
       Rechercher
     </button>
   </form>
+  <div *ngIf="dataLoaded">
+    <div class="mt-4">
+      <app-pokemon-view
+        *ngIf="pokemonData"
+        [pokemon]="pokemonData"
+      ></app-pokemon-view>
+    </div>
+    <!-- separator-->
+    <div class="mx-auto max-w-6xl lg:flex flex-row lg:gap-8 justify-center">
+      <div class="w-full lg:w-1/2">
+        <app-pokemon-stat
+          *ngIf="pokemonData"
+          [pokemon]="pokemonData"
+        ></app-pokemon-stat>
+      </div>
+      <div class="mt-4 lg:mt-0 w-full lg:w-1/2">
+        <app-pokemon-resistance
+          *ngIf="pokemonData"
+          [resistance]="pokemonData.resistances"
+        >
+        </app-pokemon-resistance>
+      </div>
+    </div>
+  </div>
+  <div
+    *ngIf="!dataLoaded"
+    class="fixed inset-0 flex flex-col items-center justify-center text-red-600 underline font-bold-600"
+  >
+    <h1>Erreur nom du pokemon incorrecte !!!</h1>
+    <img
+      class="max-h-64 w-auto mt-4 mx-auto"
+      src="images/404_11.jpg"
+      alt="page not found"
+    />
+  </div>
 </main>
+<router-outlet></router-outlet>
